@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="mt-3 mb-3">
+  <a href="/travels/create"><button class="btn btn-primary" style="background-color: #20407b;">Create New Trip</button></a>
+</div>
+
+  {% for travel in travels %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="/guides/{{ travel.guide_id }}">{{ travel.guide.name }} {{ travel.guide.surname }}</a>
+        </div>
+        <h2><a class="article-title" href="/travels/{{ travel.id }}">{{ travel.title }}</a></h2>
+        <p class="article-content">{{ travel.content }}</p>
+      </div>
+    </article>
+  {% endfor %}
+  <div class="mt-4">
+  	<a href="/travels/create"><button class="btn btn-primary" style="background-color: #20407b;">Create New Trip</button></a>
+  </div>
+
+{% endblock content %}
