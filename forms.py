@@ -23,7 +23,6 @@ class GuideForm(FlaskForm):
         'image_file')
 
 
-
 class TravelForm(FlaskForm):
     guide_id = StringField(
         'guide_id',
