@@ -1,7 +1,7 @@
 import os
 import sys
 import babel
-from flask import Flask, render_template, url_for, flash, request, redirect   # abort, jsonify
+from flask import Flask, render_template, url_for, flash, request, redirect, abort   # jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -28,7 +28,8 @@ CORS(app)
 @app.route('/home')
 def home():
     try:
-        travels=Travel.query.all()
+        page = request.args.get('page', 1, type=int)
+        travels=Travel.query.paginate(page=page, per_page=3)
     except Exception:
         abort(404)
     return render_template('home.html', travels=travels)
@@ -37,16 +38,6 @@ def home():
 @app.route('/about')
 def about():
     return render_template('about.html', title='About')
-
-
-@app.route('/login')
-def login():
-    return render_template('login.html', title='Login')
-
-
-@app.route('/register')
-def register():
-    return render_template('register.html', title='Register')
 
 # ----------------------------------------------------------------#
 #  Guides
@@ -142,7 +133,8 @@ def delete_guide(guide_id):
 # ----------------------------------------------------------------#
 @app.route('/travels')
 def travels():
-    travels=Travel.query.all()
+    page = request.args.get('page', 1, type=int)
+    travels=Travel.query.paginate(page=page, per_page=3)
     return render_template('travels.html', travels=travels)
 
 # Show Travel
