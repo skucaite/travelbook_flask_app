@@ -12,8 +12,8 @@ from os import environ as env
 from werkzeug.exceptions import HTTPException
 
 
-from .forms import TravelForm, GuideForm
-from .models import setup_db, Guide, Travel, db, db_drop_and_create_all
+from forms import TravelForm, GuideForm
+from models import setup_db, Guide, Travel, db, db_drop_and_create_all
 
 
 app = Flask(__name__)
