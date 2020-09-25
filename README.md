@@ -3,7 +3,7 @@
 ## Background
 This is my first web app made by my own. This code is currently deployed on Heroku and accessible at the following URL.
 
-``` https://stormy-mountain-59854.herokuapp.com/. ```
+``` https://stormy-mountain-59854.herokuapp.com/ ```
 
 ## Resource endpoint library
 
